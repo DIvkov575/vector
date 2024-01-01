@@ -37,9 +37,10 @@ required-features = ["secret-backend-example"]
 
 [profile.release]
 debug = false
-codegen-units = 16
-lto = true
-rustflags = ["-C", "target-cpu=native"]
+lto = false
+#codegen-units = 16
+#lto = true
+#rustflags = ["-C", "target-cpu=native"]
 #opt-level="c"
 #opt-level="z"
 

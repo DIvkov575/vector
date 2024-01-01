@@ -1,16 +1,14 @@
-FROM alpine:latest as builder
+FROM debian:buster-slim as builder
 
 WORKDIR /src/vector
 COPY . .
 
 RUN <<EOF
-  apk add curl
-  apk add gcc
-  apk add libc-dev
-  apk add make
+#  apt install curl
+  apt install gcc
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
   source ~/.cargo/env
-  make release
+
 #  cargo build --release
 EOF
 
