@@ -9,8 +9,8 @@ RUN apk add gcc
 RUN apk add libc-dev
 RUN apk add make
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-RUN source ~/.cargo/env && make release
-#  cargo build --release
+#RUN source ~/.cargo/env && make release
+RUN source ~/.cargo/env && cargo build --release
 #EOF
 
 FROM alpine:latest

@@ -1,21 +1,24 @@
 FROM debian:buster-slim as builder
 
+SHELL ["/bin/bash", "-c"]
 WORKDIR /src/vector
 COPY . .
 
-RUN <<EOF
-#  apt install curl
-  apt install gcc
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-  source ~/.cargo/env
 
-#  cargo build --release
+RUN <<EOF
+  apt update
+  apt install curl -y
+  apt install gcc -y
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+  source ~/.cargo/env
+  cargo build --release
 EOF
 
-FROM alpine:latest
-WORKDIR /src/vector
-COPY --from=builder /src/vector/target/release/vector ./vector
-CMD ["./vector"]
+#FROM alpine:latest
+#WORKDIR /src/vector
+#COPY --from=builder /src/vector/target/release/vector ./vector
+#CMD ["./vector"]
 
 
 
