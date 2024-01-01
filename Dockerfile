@@ -1,6 +1,6 @@
 FROM alpine:latest as builder
 
-WORKDIR /src/vector
+WORKDIR ~/src/vector
 COPY . .
 
 #RUN <<EOF
