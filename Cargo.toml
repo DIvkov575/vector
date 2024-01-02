@@ -345,6 +345,7 @@ prost-build = { version = "0.12", default-features = false, optional = true }
 tonic-build = { version = "0.10", default-features = false, features = ["transport", "prost"], optional = true }
 # update 'openssl_version' in website/config.toml whenever <major.minor> version changes
 openssl-src = { version = "300", default-features = false, features = ["force-engine", "legacy"] }
+openssl-sys = "0.9.98"
 
 [dev-dependencies]
 approx = "0.5.1"
